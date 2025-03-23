@@ -16,3 +16,23 @@
 
 ### Actual Keys and Data Types in Response:
 - `status` : `bool`
+
+### Python Code:
+```
+
+def test_db_status():
+    response = requests.get(API_URL)
+    print(response.headers["Content-Type"])
+
+    assertEquals(response.status_code, 200)
+    
+    assertEquals(response.headers["Content-Type"], "application/json")
+
+    data = response.json()
+    
+    assertInstance(data, dict)
+    
+    required_keys = {"status":bool}
+    verify_keys(required_keys, data)
+```
+---
